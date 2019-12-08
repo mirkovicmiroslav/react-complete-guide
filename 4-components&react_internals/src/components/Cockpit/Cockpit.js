@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import classes from "./Cockpit.css";
 
-const cockpit = props => {
+const Cockpit = props => {
+  useEffect(() => {
+    console.log("[Cockpit.js] useEffect");
+    // Http request...
+    setTimeout(() => {
+      alert("Saved data to cloud!");
+    }, 1000);
+  }, []);
+
+  // useEffect();
+
   const assignClasses = [];
   let btnClass = "";
   if (props.showPersons) {
@@ -17,7 +27,7 @@ const cockpit = props => {
 
   return (
     <div>
-      <h1>Hi, I'm React App!</h1>
+      <h1>{props.title}</h1>
       <p className={assignClasses.join(" ")}>This is really working!</p>
       <button className={btnClass} onClick={props.clicked}>
         Toggle Persons
@@ -26,4 +36,4 @@ const cockpit = props => {
   );
 };
 
-export default cockpit;
+export default Cockpit;
